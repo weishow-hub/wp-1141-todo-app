@@ -3,19 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
+    <title>待辦事項管理</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">todo list</h1>
+    <!-- 登入/註冊表單 -->
+    <div id="authContainer" class="auth-container">
+        <div class="auth-box">
+            <h1 class="auth-title">待辦事項管理</h1>
+            
+            <!-- 登入表單 -->
+            <div id="loginForm" class="auth-form">
+                <h2>登入</h2>
+                <div class="form-group">
+                    <input type="text" id="loginUsername" placeholder="使用者名稱" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="loginPassword" placeholder="密碼" class="form-input" required>
+                </div>
+                <button id="loginBtn" class="auth-btn">登入</button>
+                <p class="auth-switch">
+                    還沒有帳號？ <a href="#" id="showRegister">註冊</a>
+                </p>
+                <div id="authError" class="error-message"></div>
+            </div>
+            
+            <!-- 註冊表單 -->
+            <div id="registerForm" class="auth-form" style="display: none;">
+                <h2>註冊</h2>
+                <div class="form-group">
+                    <input type="text" id="registerUsername" placeholder="使用者名稱" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="registerPassword" placeholder="密碼" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="registerPasswordConfirm" placeholder="確認密碼" class="form-input" required>
+                </div>
+                <button id="registerBtn" class="auth-btn">註冊</button>
+                <p class="auth-switch">
+                    已有帳號？ <a href="#" id="showLogin">登入</a>
+                </p>
+                <div id="registerError" class="error-message"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 主要應用程式 -->
+    <div id="appContainer" class="container" style="display: none;">
+        <div class="header">
+            <h1 class="title">待辦事項</h1>
+            <div class="user-info">
+                <span id="usernameDisplay"></span>
+                <button id="logoutBtn" class="logout-btn">登出</button>
+            </div>
+        </div>
         
         <div class="add-todo-section">
             <div class="input-group">
-                <input type="text" id="todoInput" placeholder="new todo" class="todo-input">
-                <button id="addBtn" class="add-btn">add</button>
+                <input type="text" id="todoInput" placeholder="新增待辦事項" class="todo-input">
+                <button id="addBtn" class="add-btn">新增</button>
             </div>
-            <textarea id="descriptionInput" placeholder="description" class="description-input"></textarea>
+            <textarea id="descriptionInput" placeholder="描述（選填）" class="description-input"></textarea>
         </div>
         
         <div class="todo-list" id="todoList">
